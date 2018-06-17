@@ -9,4 +9,8 @@ public class Config {
 	public String defaultWorldId;
 
 	public HashMap<String, String> worlds;
+
+	public String defaultInventoryId;
+
+	public HashMap<String, String> defaultInventorys;
 }

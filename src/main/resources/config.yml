@@ -1,8 +1,8 @@
 {
+  "kickReason": "Failed to load inventory",
+
   #Default world id will be used when the world is not in the list
   "defaultWorldId": "inventory-unknown",
-
-  "kickReason": "Failed to load inventory",
 
   #World ids.
   #Example: ("WORLD_NAME": "INVENTORY NAME")
@@ -14,5 +14,16 @@
     "bedwars2": "inventory-1",
     "skypvp1": "inventory-2",
     "skypvp2": "inventory-2"
+  },
+
+  #Default inventory id will be used when the defaultInventory is not in the list
+  "defaultInventoryId": "inventory-unknown",
+
+  #Default inventory ids
+  #Example: ("WORLD_NAME": "DEFAULT_INVENTORY_NAME")
+  "defaultInventorys": {
+    "world": "inventory-0",
+    "world_nether": "inventory-0",
+    "world_the_end": "inventory-0"
   }
 }

@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import de.ngloader.multiinventory.listener.PlayerListener;
@@ -67,19 +66,27 @@ public class MultiInventory extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		Path path = new File(this.getDataFolder(), "config.yml").toPath();
-		Gson gson = new GsonBuilder().create();
+		Path pathDefaultInventory = new File(this.getDataFolder(), "/default/inventory-unknown.yml").toPath();
+		Path pathConfig = new File(this.getDataFolder(), "config.yml").toPath();
 
-		if(Files.notExists(path))
+		if(Files.notExists(pathDefaultInventory.getParent()))
 			try {
-				Files.createDirectories(path.getParent());
-				Files.copy(MultiInventory.class.getResourceAsStream("/config.yml"), path);
+				Files.createDirectories(pathDefaultInventory.getParent());
+				Files.copy(MultiInventory.class.getResourceAsStream("/inventory-unknown.yml"), pathDefaultInventory);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-		try (BufferedReader reader = Files.newBufferedReader(path)) {
-			this.config = gson.fromJson(reader, Config.class);
+		if(Files.notExists(pathConfig))
+			try {
+				Files.createDirectories(pathConfig.getParent());
+				Files.copy(MultiInventory.class.getResourceAsStream("/config.yml"), pathConfig);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		try (BufferedReader reader = Files.newBufferedReader(pathConfig)) {
+			this.config = new GsonBuilder().create().fromJson(reader, Config.class);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

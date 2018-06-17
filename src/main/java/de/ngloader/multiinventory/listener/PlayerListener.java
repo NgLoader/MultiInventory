@@ -19,7 +19,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		try {
 			clearPlayer(event.getPlayer());
-			StorageApi.getStorageService().getExtension(ExtensionInventory.class).loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+			StorageApi.getStorageService().getExtension(ExtensionInventory.class).loadInventory(event.getPlayer(), event.getPlayer().getWorld());
 		} catch(Exception e) {
 			e.printStackTrace();
 			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
@@ -29,7 +29,7 @@ public class PlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		try {
-			StorageApi.getStorageService().getExtension(ExtensionInventory.class).saveInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+			StorageApi.getStorageService().getExtension(ExtensionInventory.class).saveInventory(event.getPlayer(), event.getPlayer().getWorld());
 		} catch(Exception e) {
 			e.printStackTrace();
 			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
@@ -41,21 +41,21 @@ public class PlayerListener implements Listener {
 		try {
 			ExtensionInventory extensionInventory = StorageApi.getStorageService().getExtension(ExtensionInventory.class);
 
-			extensionInventory.saveInventory(event.getPlayer(), searchId(event.getFrom()));
+			extensionInventory.saveInventory(event.getPlayer(), event.getFrom());
 
-			if(searchId(event.getFrom()).equals(searchId(event.getPlayer().getWorld())))
+			if(getWorldId(event.getFrom()).equals(getWorldId(event.getPlayer().getWorld())))
 				return;
 
 			clearPlayer(event.getPlayer());
 
-			extensionInventory.loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+			extensionInventory.loadInventory(event.getPlayer(), event.getPlayer().getWorld());
 		} catch(Exception e) {
 			e.printStackTrace();
 			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
 		}
 	}
 
-	private String searchId(World world) {
+	private String getWorldId(World world) {
 		Config config = MultiInventory.getConfiguration();
 
 		return config.worlds.getOrDefault(world.getName().toLowerCase(), config.defaultWorldId);

@@ -1,5 +1,6 @@
 package de.ngloader.multiinventory.storage;
 
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import net.imprex.storage.api.StorageProvider;
@@ -16,12 +17,12 @@ public class SQLExtensionInventory implements StorageProvider<SQLStorage>, Exten
 	}
 
 	@Override
-	public void loadInventory(Player player, String inventoryId) {
+	public void loadInventory(Player player, World world) {
 		// TODO fill
 	}
 
 	@Override
-	public void saveInventory(Player player, String inventoryId) {
+	public void saveInventory(Player player, World world) {
 		// TODO fill
 	}
 }

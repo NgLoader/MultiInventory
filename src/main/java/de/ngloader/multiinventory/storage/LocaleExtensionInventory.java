@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -28,11 +29,27 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 	}
 
 	@Override
-	public void loadInventory(Player player, String inventoryId) {
+	public void loadInventory(Player player, World world) {
+		String inventoryId = MultiInventory.getConfiguration().worlds.getOrDefault(world.getName(), MultiInventory.getConfiguration().defaultWorldId);
+
 		Path path = Paths.get(MultiInventory.getInstance().getDataFolder().getAbsolutePath(), String.format("/inventory/%s/%s.yml", player.getUniqueId().toString(), inventoryId));
 
-		if(Files.notExists(path))
-			return;
+		if(Files.notExists(path)) {
+			try {
+				Files.createDirectories(path.getParent());
+
+				Path pathCopy = Paths.get(
+						MultiInventory.getInstance().getDataFolder().getAbsolutePath(),
+						"default",
+						MultiInventory.getConfiguration().defaultInventorys.getOrDefault(world.getName(), MultiInventory.getConfiguration().defaultInventoryId) + ".yml");
+				if(Files.exists(pathCopy))
+					Files.copy(pathCopy, path);
+				else
+					return;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 		YamlConfiguration config = new YamlConfiguration();
 
@@ -43,8 +60,8 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 			 player.kickPlayer("Error loading inventory");
 		}
 
-		player.setHealth(config.getDouble("health"));
 		player.setHealthScale(config.getDouble("healthScale"));
+		player.setHealth(config.getDouble("health"));
 		player.setFoodLevel(config.getInt("food"));
 		player.setLevel(config.getInt("level"));
 
@@ -59,7 +76,9 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 	}
 
 	@Override
-	public void saveInventory(Player player, String inventoryId) {
+	public void saveInventory(Player player, World world) {
+		String inventoryId = MultiInventory.getConfiguration().worlds.getOrDefault(world.getName(), MultiInventory.getConfiguration().defaultWorldId);
+
 		Path path = Paths.get(MultiInventory.getInstance().getDataFolder().getAbsolutePath(), String.format("/inventory/%s/%s.yml", player.getUniqueId().toString(), inventoryId));
 
 		if (Files.notExists(path))
