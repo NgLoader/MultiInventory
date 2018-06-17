@@ -1,4 +1,8 @@
 name: MultiInventory
 author: NgLoader
 version: 0.0.1
+
 main: de.ngloader.multiinventory.MultiInventory
+
+depend: [ImprexStorage]
+loadbefore: [ImprexStorage]

@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.ngloader</groupId>
-	<artifactId>mutiinventory</artifactId>
-	<version>multiinventory.version</version>
+	<artifactId>multiinventory</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>mutiinventory</name>
@@ -23,21 +23,28 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
+		<repository>
+			<id>ImprexLabs/imprex-storage-mvn-repo</id>
+			<url>https://raw.github.com/ImprexLabs/imprex-storage/repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<dependencies>
-		<!--Spigot API -->
-		<dependency>
-			<groupId>org.spigotmc</groupId>
-			<artifactId>spigot-api</artifactId>
-			<version>${spigot.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!--Bukkit API -->
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>${spigot.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.imprex</groupId>
+			<artifactId>imprex-storage</artifactId>
+			<version>0.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

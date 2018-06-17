@@ -1,0 +1,19 @@
+{
+  #Debug TODO description
+  "debug": false
+
+  #Default world id will be used when the world is not in the list
+  "defaultWorldId": "inventory-unknown",
+
+  #World ids.
+  #Example: ("WORLD_NAME": "INVENTORY NAME")
+  "worlds": {
+    "world": "inventory-0",
+    "world_nether": "inventory-0",
+    "world_the_end": "inventory-0",
+    "bedwars1": "inventory-1",
+    "bedwars2": "inventory-1",
+    "skypvp1": "inventory-2",
+    "skypvp2": "inventory-2"
+  }
+}

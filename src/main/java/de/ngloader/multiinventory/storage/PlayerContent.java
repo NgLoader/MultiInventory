@@ -1,4 +1,4 @@
-package de.ngloader.multiinventory.util;
+package de.ngloader.multiinventory.storage;
 
 import java.util.List;
 
