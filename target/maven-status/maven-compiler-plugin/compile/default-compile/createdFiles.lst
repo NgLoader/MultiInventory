@@ -1,0 +1,5 @@
+de\ngloader\multiinventory\util\InventoryUtil.class
+de\ngloader\multiinventory\listener\PlayerListener.class
+de\ngloader\multiinventory\util\PlayerContent.class
+de\ngloader\multiinventory\util\ItemStackUtil.class
+de\ngloader\multiinventory\MultiInventory.class
