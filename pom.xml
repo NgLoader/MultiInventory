@@ -5,7 +5,7 @@
 
 	<groupId>de.ngloader</groupId>
 	<artifactId>multiinventory</artifactId>
-	<version>0.0.1</version>
+	<version>${multiinventory.version}</version>
 	<packaging>jar</packaging>
 
 	<name>mutiinventory</name>
@@ -34,13 +34,14 @@
 	</repositories>
 
 	<dependencies>
-		<!--Bukkit API -->
+		<!-- Bukkit API -->
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>${spigot.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Imprex API -->
 		<dependency>
 			<groupId>net.imprex</groupId>
 			<artifactId>imprex-storage</artifactId>
