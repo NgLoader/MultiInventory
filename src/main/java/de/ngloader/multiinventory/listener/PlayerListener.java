@@ -17,25 +17,42 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		clearPlayer(event.getPlayer());
-		StorageApi.getStorageService().getExtension(ExtensionInventory.class).loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+		try {
+			clearPlayer(event.getPlayer());
+			StorageApi.getStorageService().getExtension(ExtensionInventory.class).loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+		} catch(Exception e) {
+			e.printStackTrace();
+			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
+		}
 	}
 
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
-		StorageApi.getStorageService().getExtension(ExtensionInventory.class).saveInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+		try {
+			StorageApi.getStorageService().getExtension(ExtensionInventory.class).saveInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+		} catch(Exception e) {
+			e.printStackTrace();
+			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
+		}
 	}
 
 	@EventHandler
 	public void onWorldChange(PlayerChangedWorldEvent event) {
-		ExtensionInventory extensionInventory = StorageApi.getStorageService().getExtension(ExtensionInventory.class);
+		try {
+			ExtensionInventory extensionInventory = StorageApi.getStorageService().getExtension(ExtensionInventory.class);
 
-		if(searchId(event.getFrom()).equals(searchId(event.getPlayer().getWorld())))
-			return;
+			extensionInventory.saveInventory(event.getPlayer(), searchId(event.getFrom()));
 
-		extensionInventory.saveInventory(event.getPlayer(), searchId(event.getFrom()));
-		clearPlayer(event.getPlayer());
-		extensionInventory.loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+			if(searchId(event.getFrom()).equals(searchId(event.getPlayer().getWorld())))
+				return;
+
+			clearPlayer(event.getPlayer());
+
+			extensionInventory.loadInventory(event.getPlayer(), searchId(event.getPlayer().getWorld()));
+		} catch(Exception e) {
+			e.printStackTrace();
+			event.getPlayer().kickPlayer(MultiInventory.getConfiguration().kickReason);
+		}
 	}
 
 	private String searchId(World world) {

@@ -4,9 +4,7 @@ import java.util.HashMap;
 
 public class Config {
 
-	public boolean cache;
-
-	public boolean debug;
+	public String kickReason;
 
 	public String defaultWorldId;
 

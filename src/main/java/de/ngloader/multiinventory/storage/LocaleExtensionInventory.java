@@ -1,9 +1,9 @@
 package de.ngloader.multiinventory.storage;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,8 +28,8 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 	}
 
 	@Override
-	public void loadInventory(Player player, String id) {
-		Path path = new File(MultiInventory.getInstance().getDataFolder(), String.format("/inventory/%s/%s.json", player.getUniqueId().toString(), id)).toPath();
+	public void loadInventory(Player player, String inventoryId) {
+		Path path = Paths.get(MultiInventory.getInstance().getDataFolder().getAbsolutePath(), String.format("/inventory/%s/%s.yml", player.getUniqueId().toString(), inventoryId));
 
 		if(Files.notExists(path))
 			return;
@@ -43,36 +43,24 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 			 player.kickPlayer("Error loading inventory");
 		}
 
-		if(config.contains("health"))
-			player.setHealth(config.getDouble("health"));
-		if(config.contains("healthScale"))
-			player.setHealthScale(config.getDouble("healthScale"));
-		if(config.contains("food"))
-			player.setFoodLevel(config.getInt("food"));
-		if(config.contains("level"))
-			player.setLevel(config.getInt("level"));
+		player.setHealth(config.getDouble("health"));
+		player.setHealthScale(config.getDouble("healthScale"));
+		player.setFoodLevel(config.getInt("food"));
+		player.setLevel(config.getInt("level"));
 
-		if(config.contains("content")) {
-			List<?> content = config.getList("content");
-			player.getInventory().setContents(content.toArray(new ItemStack[content.size()]));
-		}
-		if(config.contains("armor")) {
-			List<?> armor = config.getList("armor");
-			player.getInventory().setArmorContents(armor.toArray(new ItemStack[armor.size()]));
-		}
-		if(config.contains("extra")) {
-			List<?> extra = config.getList("extra");
-			player.getInventory().setExtraContents(extra.toArray(new ItemStack[extra.size()]));
-		}
-		if(config.contains("potionEffect")) {
-			List<?> potionEffect = config.getList("potionEffect");
-			Arrays.asList(potionEffect.toArray(new PotionEffect[potionEffect.size()])).stream().filter(effect -> effect != null).forEach(effect -> player.addPotionEffect(effect, true));
-		}
+		List<?> content = config.getList("content");
+		player.getInventory().setContents(content.toArray(new ItemStack[content.size()]));
+		List<?> armor = config.getList("armor");
+		player.getInventory().setArmorContents(armor.toArray(new ItemStack[armor.size()]));
+		List<?> extra = config.getList("extra");
+		player.getInventory().setExtraContents(extra.toArray(new ItemStack[extra.size()]));
+		List<?> potionEffect = config.getList("potionEffect");
+		Arrays.asList(potionEffect.toArray(new PotionEffect[potionEffect.size()])).stream().filter(effect -> effect != null).forEach(effect -> player.addPotionEffect(effect, true));
 	}
 
 	@Override
-	public void saveInventory(Player player, String id) {
-		Path path = new File(MultiInventory.getInstance().getDataFolder(), String.format("/inventory/%s/%s.json", player.getUniqueId().toString(), id)).toPath();
+	public void saveInventory(Player player, String inventoryId) {
+		Path path = Paths.get(MultiInventory.getInstance().getDataFolder().getAbsolutePath(), String.format("/inventory/%s/%s.yml", player.getUniqueId().toString(), inventoryId));
 
 		if (Files.notExists(path))
 			try {
@@ -84,19 +72,17 @@ public class LocaleExtensionInventory implements StorageProvider<LocaleStorage>,
 
 		YamlConfiguration config = new YamlConfiguration();
 
-		PlayerInventory inventory = player.getInventory();
-
 		config.set("health", player.getHealth());
 		config.set("healthScale", player.getHealthScale());
 		config.set("food", player.getFoodLevel());
 		config.set("level", player.getLevel());
 
-		if(inventory.getContents() != null)
-			config.set("content", inventory.getContents());
-		if(inventory.getArmorContents() != null)
-			config.set("armor", inventory.getArmorContents());
-		if(inventory.getExtraContents() != null)
-			config.set("extra", inventory.getExtraContents());
+		PlayerInventory inventory = player.getInventory();
+
+		config.set("content", inventory.getContents());
+		config.set("armor", inventory.getArmorContents());
+		config.set("extra", inventory.getExtraContents());
+
 		config.set("potionEffect", player.getActivePotionEffects());
 
 		try {

@@ -6,6 +6,6 @@ import net.imprex.storage.api.StorageExtension;
 
 public interface ExtensionInventory extends StorageExtension {
 
-	void loadInventory(Player player, String id);
-	void saveInventory(Player player, String id);
+	void loadInventory(Player player, String inventoryId);
+	void saveInventory(Player player, String inventoryId);
 }

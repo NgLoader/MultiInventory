@@ -16,12 +16,12 @@ public class SQLExtensionInventory implements StorageProvider<SQLStorage>, Exten
 	}
 
 	@Override
-	public void loadInventory(Player player, String id) {
+	public void loadInventory(Player player, String inventoryId) {
 		// TODO fill
 	}
 
 	@Override
-	public void saveInventory(Player player, String id) {
+	public void saveInventory(Player player, String inventoryId) {
 		// TODO fill
 	}
 }

@@ -1,9 +1,8 @@
 {
-  #Debug TODO description
-  "debug": false
-
   #Default world id will be used when the world is not in the list
   "defaultWorldId": "inventory-unknown",
+
+  "kickReason": "Failed to load inventory",
 
   #World ids.
   #Example: ("WORLD_NAME": "INVENTORY NAME")
