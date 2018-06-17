@@ -5,7 +5,7 @@
 
 	<groupId>de.ngloader</groupId>
 	<artifactId>mutiinventory</artifactId>
-	<version>0.0.1</version>
+	<version>multiinventory.version</version>
 	<packaging>jar</packaging>
 
 	<name>mutiinventory</name>
