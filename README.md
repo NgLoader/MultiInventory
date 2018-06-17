@@ -3,7 +3,7 @@
 ### Links
 Jenkins: https://jenkins.zockercraft.net/job/MultiInventory/
 
-# Download
+### Download
 - MultiInventory: [Download latest](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
 - Imprex Storage [Download](https://github.com/ImprexLabs/imprex-storage)
 
