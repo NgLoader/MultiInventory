@@ -47,3 +47,8 @@ Needed:
 depend: [MultiInventory]
 loadbefore: [MultiInventory]
 ```
+
+License
+----
+
+Apache-2.0
