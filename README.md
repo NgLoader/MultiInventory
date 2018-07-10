@@ -6,7 +6,7 @@
 
 ### Download
 - MultiInventory [Download latest](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
-- Imprex Storage [Download](https://github.com/ImprexLabs/imprex-storage)
+- Imprex Storage [Download latest](https://github.com/ImprexLabs/imprex-storage)
 
 ### Storage supports
 - Locale
