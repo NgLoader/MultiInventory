@@ -1,13 +1,13 @@
-# MultiInventory [![Build status](https://jenkins.zockercraft.net/buildStatus/icon?job=MultiInventory)](https://jenkins.zockercraft.net/job/MultiInventory/)
+# MultiInventory [![Build Status](https://jenkins.wuffy.eu/buildStatus/icon?job=MultiInventory)](https://wuffy.eu.net/job/MultiInventory/)
 
 ### Links
 - **[Jenkins](https://jenkins.zockercraft.net/job/MultiInventory/)**
 - **[Discord](https://chat.wuffy.eu)**
-- **[Imprex Storage](https://github.com/ImprexLabs/imprex-storage)**
+- **[Imprex-Storage](https://github.com/ImprexLabs/imprex-storage)**
 
 ### Downloads
 - MultiInventory [Download latest](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
-- Imprex Storage [Download latest](https://github.com/ImprexLabs/imprex-storage)
+- Imprex-Storage [Download Latest](https://jenkins.wuffy.eu/job/Imprex-Storage/lastBuild/)
 
 ### Storage supports
 - Locale
@@ -19,10 +19,10 @@
 
 ## IMPORTANT
 Needed:
-- Imprex Storage [Download](https://github.com/ImprexLabs/imprex-storage)
+- Imprex-Storage [Download](https://github.com/ImprexLabs/imprex-storage)
 
 ## Configurate
-1. Download [ImprexStorage](https://jenkins.zockercraft.net/job/Imprex-Storage/lastBuild/)
+1. Download [Imprex-Storage](https://jenkins.zockercraft.net/job/Imprex-Storage/lastBuild/)
 2. Download [MultiInventory](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
 3. Restart your minecraft server
 4. Go into your plugins/ImprexStorage folder and open the config.yml
@@ -66,8 +66,8 @@ Needed:
 
 ### Add this to your Plugin.yml
 ```yml
-depend: [MultiInventory]
-loadbefore: [MultiInventory]
+depend: [MultiInventory, ImprexStorage]
+loadbefore: [MultiInventory, ImprexStorage]
 ```
 
 License
