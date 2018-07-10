@@ -21,11 +21,11 @@ Needed:
 - Imprex Storage [Download](https://github.com/ImprexLabs/imprex-storage)
 
 ## Configurate
-1. Download [ImprexStorage](https://github.com/ImprexLabs/imprex-storage)
+1. Download [ImprexStorage](https://jenkins.zockercraft.net/job/Imprex-Storage/lastBuild/)
 2. Download [MultiInventory](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
 3. Restart your minecraft server
 4. Go into your plugins/ImprexStorage folder and open the config.yml
-5. Place under extensions this ``"multiinventory": "YOUR_STORAGE_TYPE"``
+5. Add ``multiinventory`` to extensions with your storage type
 #### EXAMPLE
 ```json
 "extensions": {
@@ -33,7 +33,6 @@ Needed:
     "multiinventory": "locale"
   }
 ```
-6. Change YOUR_STORAGE_TYPE to your selected storage type (default: **locale**)
 7. Save config.yml
 8. That was it.
 
