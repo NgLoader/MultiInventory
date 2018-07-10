@@ -9,7 +9,8 @@
 - Imprex Storage [Download](https://github.com/ImprexLabs/imprex-storage)
 
 ### Todo
-- Adding scoreboard
+- Support SQL
+- Add scoreboard saving
 
 ## IMPORTANT
 Needed:
