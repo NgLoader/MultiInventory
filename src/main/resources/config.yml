@@ -1,29 +1,103 @@
 {
   "kickReason": "Failed to load inventory",
 
-  #Default world id will be used when the world is not in the list
-  "defaultWorldId": "inventory-unknown",
+  #Default world id will be used when the world is not in the worlds list
+  "defaultInventoryId": "inventory-example",
+  #Default inventory id will be used when the defaultInventory
+  "defaultTemplateId": "template-example",
 
-  #World ids.
-  #Example: ("WORLD_NAME": "INVENTORY NAME")
+  #Autosave will automaticly save every time the delay is over all player inventory (only online players)
+  "autoSave": true,
+  #Time in seconds (default 15 minutes are 900 seconds)
+  "autoSaveDelay": 900,
+  #Time in miliseconds. This is the delay between saving players
+  "autoSaveQueueDelay": 50,
+
+  #Worlds
   "worlds": {
-    "world": "inventory-0",
-    "world_nether": "inventory-0",
-    "world_the_end": "inventory-0",
-    "bedwars1": "inventory-1",
-    "bedwars2": "inventory-1",
-    "skypvp1": "inventory-2",
-    "skypvp2": "inventory-2"
-  },
-
-  #Default inventory id will be used when the defaultInventory is not in the list
-  "defaultInventoryId": "inventory-unknown",
-
-  #Default inventory ids
-  #Example: ("WORLD_NAME": "DEFAULT_INVENTORY_NAME")
-  "defaultInventorys": {
-    "world": "inventory-0",
-    "world_nether": "inventory-0",
-    "world_the_end": "inventory-0"
+    #World name
+    "world": {
+        #Inventory to use
+        "inventoryId": "inventory-example",
+        #Default inventory when no inventory exist
+        "templateId": "inventory-example",
+        #Settings for world
+        #When you disable the settings it will used the defaultInventory value settings
+        "settings": {
+            #!!!Only enable setLocation when your worldInventory is only for one world it will you teleport to the last position in the last world!!!
+            "setLocation": false,
+            "setBedSpawnLocation": true,
+            "setDisplayName": false,
+            "setGamemode": true,
+            "setAllowFlying": true,
+            "setWalkSpeed": true,
+            "setFlySpeed": true,
+            "setHealth": true,
+            "setHealthScale": true,
+            "setFood": true,
+            "setFireTicks": true,
+            "setExhaustion": true,
+            "setTotalExperience": true,
+            "setLevel": true,
+            "setExp": true,
+            "setInventoryContent": true,
+            "setInventoryArmor": true,
+            "setInventoryExtra": true,
+            "setEnderChest": true,
+            "setPotionEffect": true
+        }
+    },
+    "world_nether": {
+        "inventoryId": "inventory-example",
+        "templateId": "inventory-example",
+        "settings": {
+            "setLocation": false,
+            "setBedSpawnLocation": true,
+            "setDisplayName": false,
+            "setGamemode": true,
+            "setAllowFlying": true,
+            "setWalkSpeed": true,
+            "setFlySpeed": true,
+            "setHealth": true,
+            "setHealthScale": true,
+            "setFood": true,
+            "setFireTicks": true,
+            "setExhaustion": true,
+            "setTotalExperience": true,
+            "setLevel": true,
+            "setExp": true,
+            "setInventoryContent": true,
+            "setInventoryArmor": true,
+            "setInventoryExtra": true,
+            "setEnderChest": true,
+            "setPotionEffect": true
+        }
+    },
+    "world_the_end": {
+        "inventoryId": "inventory-example",
+        "templateId": "inventory-example",
+        "settings": {
+            "setLocation": false,
+            "setBedSpawnLocation": true,
+            "setDisplayName": false,
+            "setGamemode": true,
+            "setAllowFlying": true,
+            "setWalkSpeed": true,
+            "setFlySpeed": true,
+            "setHealth": true,
+            "setHealthScale": true,
+            "setFood": true,
+            "setFireTicks": true,
+            "setExhaustion": true,
+            "setTotalExperience": true,
+            "setLevel": true,
+            "setExp": true,
+            "setInventoryContent": true,
+            "setInventoryArmor": true,
+            "setInventoryExtra": true,
+            "setEnderChest": true,
+            "setPotionEffect": true
+        }
+    }
   }
 }
