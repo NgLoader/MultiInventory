@@ -4,7 +4,9 @@
 - **[Jenkins](https://jenkins.zockercraft.net/job/MultiInventory/)**
 - **[Discord](https://chat.wuffy.eu)**
 
-### Download
+- **[Imprex Storage](https://github.com/ImprexLabs/imprex-storage)**
+
+### Downloads
 - MultiInventory [Download latest](https://jenkins.zockercraft.net/job/MultiInventory/lastBuild/)
 - Imprex Storage [Download latest](https://github.com/ImprexLabs/imprex-storage)
 
