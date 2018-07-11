@@ -1,3 +1,5 @@
+<img align="right" src="https://avatars1.githubusercontent.com/u/13753840?s=460&v=4" height="200" width="200">
+
 # MultiInventory [![Build Status](https://jenkins.wuffy.eu/buildStatus/icon?job=MultiInventory)](https://wuffy.eu.net/job/MultiInventory/)
 
 ### Links
