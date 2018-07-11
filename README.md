@@ -2,7 +2,6 @@
 
 # MultiInventory [![Build Status](https://jenkins.wuffy.eu/buildStatus/icon?job=MultiInventory)](https://wuffy.eu.net/job/MultiInventory/)
 
-
 ### Links
 - **[Jenkins](https://jenkins.zockercraft.net/job/MultiInventory/)**
 - **[Discord](https://chat.wuffy.eu)**
